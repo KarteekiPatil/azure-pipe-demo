@@ -3,7 +3,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 variables:
-  azureSubscription: '22ebdf17-ad01-4f71-a895-cb078a581d15'
   resourceGroupName: 'myResourceGroup'
   location: 'eastus'
 
