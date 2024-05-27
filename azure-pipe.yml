@@ -1,7 +1,7 @@
 trigger:
 - main
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'AKS-Agent'
 variables:
   resourceGroupName: 'myResourceGroup'
   location: 'eastus'
