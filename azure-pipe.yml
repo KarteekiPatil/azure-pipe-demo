@@ -1,7 +1,7 @@
 trigger:
 - main
 pool:
-  name: 'Azure Pipelines'
+  name: 'Default'
 variables:
   azureSubscription: '22ebdf17-ad01-4f71-a895-cb078a581d15'
   resourceGroupName: 'myResourceGroup'
