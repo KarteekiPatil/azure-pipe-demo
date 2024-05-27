@@ -1,0 +1,31 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  azureSubscription: '22ebdf17-ad01-4f71-a895-cb078a581d15'
+  resourceGroupName: 'myResourceGroup'
+  location: 'eastus'
+
+stages:
+- stage: Deploy
+  jobs:
+  - job: DeployAKS
+    steps:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Create Resource Group
+          az group create --name $(resourceGroupName) --location $(location)
+
+          # Deploy AKS using Bicep
+          az deployment group create \
+            --resource-group $(resourceGroupName) \
+            --template-file aks-cluster.bicep \
+            --parameters @parameters.json location=$(location)
+    displayName: 'Deploy AKS Cluster using Bicep'
