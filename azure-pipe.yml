@@ -25,7 +25,7 @@ stages:
 
           # Deploy AKS using Bicep
           az deployment group create \
-            --resource-group $(resourceGroupName) \
-            --template-file aks-cluster.bicep \
-            --parameters @parameters.json location=$(location)
+          --resource-group $(resourceGroupName) \
+          --template-file aks-cluster.bicep \
+          --parameters @parameters.json location=$(location)
     displayName: 'Deploy AKS Cluster using Bicep'
