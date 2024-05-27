@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "clusterName": {
+        "value": "myAKSCluster"
+      },
+      "dnsPrefix": {
+        "value": "aksdns"
+      },
+      "location": {
+        "value": "eastus"
+      },
+      "linuxAdminUsername": {
+        "value": "azureuser"
+      },
+      "sshRSAPublicKey": {
+        "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0oaTkXIOuMHxoOaepOd5kdv3VuRIe+Bf0+168seXC8rS9UDO4eNl0WoQpY5jPZVKr/pOl36cC5E2AoOp4y0+qPEX58PwbTDdeGjnoUR2DH9lzEi5Wf42O+xDI0KthSB7tuK+LAMKtKbNY8Nkjdw/22/PBDIcT4OF7mIqXpkITxZzrsUqryzDIOJsMHARFg2+ytjWei/A7JqLPT81dnmDneo/TCJVFxreCFS0D/szUU27XgSKHfCc0l7teqjMOh7yeaCvLc5ZZgOUa14rZZ0POwGOj+6w4SiBupL2VC+1qaC+b1YM7LfrjEm9FimwDFMElcLkOAGAR4+3Wh1glm/wlIGzKZyXFew/s8YU/Gro6Z1Vm3WxLqY9QBHDpSei6FRTjw2mbHWC3yxKEl2wyBGsy41CWumyYqEMyBgmpavkUt1Udhyi2Hs60TwCe+EK9dwxClFVKEOqD004shisce+Mda//uq7aw28tw1zEe0MrXsxAucPb08B9b9stQW22ZjMqTpxERRWR37Rll0W3P51pT2vVzhdXAj4crZp1Gl8eyHe5Q+eFH+AqJvlx29FSJcc3QwFs2c1pbVPxkZ80CD7Nn3lQd1qFYNcnNSwt+RPiWPh507RAsxI35t6H5LpON4Sh5qaOJO9KHgLs/xMJJW6PdV1V/FG1n60+y8yKddk9uYw== ardianet/kpatil2@L-INE-DVQCQG3"
+    },
+      "agentCount": {
+        "value": 1
+      },
+      "agentVMSize": {
+        "value": "Standard_DS2_v2"
+      },
+      "osDiskSizeGB": {
+        "value": 128
+      }
+    }
+  }
+  
