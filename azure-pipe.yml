@@ -2,10 +2,6 @@ trigger:
 - main
 pool:
   name: 'Default'
-#variables:
- # resourceGroupName: 'myResourceGroup'
- # location: 'eastus'
-
 stages:
 - stage: Deploy
   jobs:
@@ -17,9 +13,6 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          # Create Resource Group
-          #az group create --name myResourceGroup --location $(location)
-
           # Deploy AKS using Bicep
           az deployment group create \
           --resource-group AKS-RG \
