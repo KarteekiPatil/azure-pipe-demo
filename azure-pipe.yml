@@ -1,7 +1,7 @@
 trigger:
 - main
 pool:
-  name: 'windows-2022'
+  name: Default
 variables:
   resourceGroupName: 'myResourceGroup'
   location: 'eastus'
