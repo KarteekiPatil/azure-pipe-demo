@@ -1,7 +1,7 @@
 trigger:
 - main
 pool:
-  name: 'AKS-Agent'
+  name: 'windows-latest'
 variables:
   resourceGroupName: 'myResourceGroup'
   location: 'eastus'
