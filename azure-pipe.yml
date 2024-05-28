@@ -1,7 +1,7 @@
 trigger:
 - main
 pool:
-  name: 'Hosted Agent Online'
+  name: 'Azure Pipelines'
 variables:
   resourceGroupName: 'myResourceGroup'
   location: 'eastus'
