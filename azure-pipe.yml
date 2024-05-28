@@ -1,7 +1,7 @@
 trigger:
 - main
 pool:
-  name: Azure Pipelines
+  name: Default
 variables:
   resourceGroupName: 'myResourceGroup'
   location: 'eastus'
