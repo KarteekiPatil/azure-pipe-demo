@@ -2,9 +2,9 @@ trigger:
 - main
 pool:
   name: 'Default'
-variables:
-  resourceGroupName: 'myResourceGroup'
-  location: 'eastus'
+#variables:
+ # resourceGroupName: 'myResourceGroup'
+ # location: 'eastus'
 
 stages:
 - stage: Deploy
@@ -18,11 +18,11 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # Create Resource Group
-          az group create --name $(resourceGroupName) --location $(location)
+          az group create --name myResourceGroup --location $(location)
 
           # Deploy AKS using Bicep
           az deployment group create \
-          --resource-group $(resourceGroupName) \
+          --resource-group myResourceGroup \
           --template-file aks-cluster.bicep \
           --parameters @parameters.json 
     displayName: 'Deploy AKS Cluster using Bicep'
