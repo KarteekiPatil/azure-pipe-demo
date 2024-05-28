@@ -18,11 +18,11 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # Create Resource Group
-          az group create --name myResourceGroup --location $(location)
+          #az group create --name myResourceGroup --location $(location)
 
           # Deploy AKS using Bicep
           az deployment group create \
-          --resource-group myResourceGroup \
+          --resource-group az-pipe-rg \
           --template-file aks-cluster.bicep \
           --parameters @parameters.json 
     displayName: 'Deploy AKS Cluster using Bicep'
