@@ -22,7 +22,7 @@ stages:
 
           # Deploy AKS using Bicep
           az deployment group create \
-          --resource-group az-pipe-rg \
+          --resource-group AKS-RG \
           --template-file aks-cluster.bicep \
           --parameters @parameters.json 
     displayName: 'Deploy AKS Cluster using Bicep'
