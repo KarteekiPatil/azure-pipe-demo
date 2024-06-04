@@ -18,4 +18,24 @@ stages:
           --resource-group AKS-RG \
           --template-file aks-cluster.bicep \
           --parameters @parameters.json 
+
+          az aks get-credentials --resource-group $(resourceGroupName) --name $(aksClusterName)
+
+          # Install Helm
+          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+          # Add the Bitnami repo
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+
+          # Install External DNS
+          helm install external-dns bitnami/external-dns \
+            --set provider=azure \
+            --set azure.resourceGroup=DNS_ZONE_RG \
+            --set azure.subscriptionId=22ebdf17-ad01-4f71-a895-cb078a581d15 \
+            --set azure.tenantId=438ec686-85a2-42e0-9a71-0bfc236adee6 \
+            --set azure.clientId=87003e51-60ad-4d85-8e01-98fb98c6b713 \
+            --set azure.clientSecret=$(secrets.clisecret)\
+            --set domainFilters[0]=rgazuredns.com\
+            --set txtOwnerId=aks-external-dns
     displayName: 'Deploy AKS Cluster using Bicep'
