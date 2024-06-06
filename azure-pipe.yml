@@ -1,5 +1,8 @@
 trigger:
 - main
+variables:
+  clientSecret : '${{secret.clisecret}}'
+  clientId : 'e83b465b-5419-495d-b029-993bba2c6636r'
 pool:
   name: 'Default'
 stages:
