@@ -62,22 +62,8 @@ resource aks 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
       networkPlugin: 'azure'
     }
   }
-  dependsOn: [
-    publicIP
-  ]
+  
 }
-resource publicIP 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
-  name: -publicIP'
-  location: location
-  sku: {
-    name: 'Standard'
-  }
-  properties: {
-    publicIPAllocationMethod: 'Static'
-    dnsSettings: {
-      domainNameLabel: dnsNamePrefix
-    }
-  }
-}
+
 
 output controlPlaneFQDN string = aks.properties.fqdn
