@@ -22,7 +22,7 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # Get AKS credentials
-          az aks get-credentials --resource-group $(resourceGroupName) --name $(aksClusterName)
+          az aks get-credentials --resource-group AKS-DNS --name AKSClusterDNS
 
           # Install Helm
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
