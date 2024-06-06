@@ -20,6 +20,9 @@ param agentCount int
 @description('The size of the Virtual Machine.')
 param agentVMSize string 
 
+param clientId string
+param clientSecret string
+
 @description('User name for the Linux Virtual Machines.')
 param linuxAdminUsername string
 
