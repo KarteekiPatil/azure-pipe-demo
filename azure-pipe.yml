@@ -38,4 +38,4 @@ stages:
             --set azure.clientSecret=$(secrets.clisecret)\
             --set domainFilters[0]=rgazuredns.com\
             --set txtOwnerId=aks-external-dns
-    displayName: 'Deploy AKS Cluster using Bicep'
+    displayName: 'Deploy AKS Cluster using Bicep new'
