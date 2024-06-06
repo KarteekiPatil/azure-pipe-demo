@@ -21,12 +21,6 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          # Deploy AKS using Bicep
-          #az deployment group create \
-         # --resource-group AKS-RG \
-          #--template-file aks-cluster.bicep \
-         # --parameters @parameters.json
-          # Get AKS credentials
           az aks get-credentials --resource-group AKS-RG --name myAKSCluster
 
           # Install Helm
@@ -46,6 +40,4 @@ stages:
             --set azure.clientSecret=$(clientSecret) \
             --set domainFilters[0]=$(dnsZoneName) \
             --set txtOwnerId=aks-external-dns
-
-
     displayName: 'Deploy AKS Cluster using Bicep new'
