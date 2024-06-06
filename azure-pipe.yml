@@ -1,12 +1,12 @@
 trigger:
 - main
-#variables:
- # clientSecret : '$(secret.clisecret)'
-  #clientId : 'e83b465b-5419-495d-b029-993bba2c6636r'
-  #tenantId : '438ec686-85a2-42e0-9a71-0bfc236adee6'
-  #subscriptionId : '22ebdf17-ad01-4f71-a895-cb078a581d15'
-  #dnsZoneName : 'azureexternalnew.com'
-  #dnsZoneResourceGroup : 'DNS_ZONE_RG'
+variables:
+  clientSecret : '$(secret.clisecret)'
+  clientId : 'e83b465b-5419-495d-b029-993bba2c6636r'
+  tenantId : '438ec686-85a2-42e0-9a71-0bfc236adee6'
+  subscriptionId : '22ebdf17-ad01-4f71-a895-cb078a581d15'
+  dnsZoneName : 'azureexternalnew.com'
+  dnsZoneResourceGroup : 'DNS_ZONE_RG'
   
 pool:
   name: 'Default'
@@ -21,10 +21,24 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          # Deploy AKS using Bicep
-          az deployment group create \
-          --resource-group AKS-DNS \
-          --template-file aks-cluster.bicep \
-          --parameters @parameters.json
           # Get AKS credentials
+          az aks get-credentials --resource-group $(resourceGroupName) --name $(aksClusterName)
+
+          # Install Helm
+          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+          # Add the Bitnami repo
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+
+          # Install External DNS
+          helm install external-dns-demo-pipe bitnami/external-dns \
+            --set provider=azure \
+            --set azure.resourceGroup=$(dnsZoneResourceGroup) \
+            --set azure.subscriptionId=$(azureSubscription) \
+            --set azure.tenantId=$(tenantId) \
+            --set azure.clientId=$(clientId) \
+            --set azure.clientSecret=$(clientSecret)\
+            --set domainFilters[0]=$(dnsZoneName) \
+            --set txtOwnerId=aks-external-dns
     displayName: 'Deploy AKS Cluster using Bicep new'
